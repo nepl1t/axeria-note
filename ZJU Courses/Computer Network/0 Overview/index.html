@@ -1,0 +1,1389 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://nepl1t.github.io/axeria-note/ZJU%20Courses/Computer%20Network/0%20Overview/">
+      
+      
+        <link rel="prev" href="../../">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>0 Overview - Axeria Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#network-technology-from-local-to-global" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Axeria Notebook" class="md-header__button md-logo" aria-label="Axeria Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M82.6 76.1c-3.8-5.1-8.7-9.4-14.2-12.5s-11.7-5.1-18.1-5.7-12.8.1-18.8 2.2-11.6 5.3-16.3 9.6c-17.6 16.2-19 43.5-4.8 62.8l91.8 123L9.9 379.6c-14.2 19.3-13.1 46.6 4.7 62.8 4.7 4.3 10.3 7.6 16.3 9.6s12.5 2.8 18.8 2.2 12.5-2.5 18.1-5.7S78.2 441.1 82 436l128.9-173.3c1.5-2.1 2.3-4.6 2.3-7.1s-.8-5-2.3-7.1zm355.6 303.5-92.3-124.1 91.8-123c14.2-19.2 12.8-46.6-4.7-62.8-4.7-4.3-10.3-7.6-16.3-9.6s-12.5-2.8-18.8-2.2-12.5 2.5-18.1 5.7-10.4 7.4-14.2 12.5l-128 172.1c-1.5 2.1-2.3 4.6-2.3 7.1s.8 5 2.3 7.1L366 435.9c3.8 5.1 8.7 9.4 14.2 12.5s11.7 5.1 18.1 5.7 12.8-.1 18.8-2.2 11.6-5.3 16.3-9.6c17.8-16.2 19-43.5 4.7-62.8z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Axeria Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              0 Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nepl1t/axeria-note" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nepl1t/axeria-note
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to Axeria
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Other%20CS%20Courses/" class="md-tabs__link">
+          
+  
+  
+  Other CS Courses
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  ZJU Courses
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Axeria Notebook" class="md-nav__button md-logo" aria-label="Axeria Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M82.6 76.1c-3.8-5.1-8.7-9.4-14.2-12.5s-11.7-5.1-18.1-5.7-12.8.1-18.8 2.2-11.6 5.3-16.3 9.6c-17.6 16.2-19 43.5-4.8 62.8l91.8 123L9.9 379.6c-14.2 19.3-13.1 46.6 4.7 62.8 4.7 4.3 10.3 7.6 16.3 9.6s12.5 2.8 18.8 2.2 12.5-2.5 18.1-5.7S78.2 441.1 82 436l128.9-173.3c1.5-2.1 2.3-4.6 2.3-7.1s-.8-5-2.3-7.1zm355.6 303.5-92.3-124.1 91.8-123c14.2-19.2 12.8-46.6-4.7-62.8-4.7-4.3-10.3-7.6-16.3-9.6s-12.5-2.8-18.8-2.2-12.5 2.5-18.1 5.7-10.4 7.4-14.2 12.5l-128 172.1c-1.5 2.1-2.3 4.6-2.3 7.1s.8 5 2.3 7.1L366 435.9c3.8 5.1 8.7 9.4 14.2 12.5s11.7 5.1 18.1 5.7 12.8-.1 18.8-2.2 11.6-5.3 16.3-9.6c17.8-16.2 19-43.5 4.7-62.8z"/></svg>
+
+    </a>
+    Axeria Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nepl1t/axeria-note" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nepl1t/axeria-note
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome to Axeria
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Other CS Courses
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Other CS Courses
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Other%20CS%20Courses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    ZJU Courses
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            ZJU Courses
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Computer Network
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    0 Overview
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    0 Overview
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#network-technology-from-local-to-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Technology: from local to global
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples-of-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples of Networks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-protocols-network-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Protocols / Network Software
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Protocols / Network Software">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#design-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      设计目标 (Design Goals)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocol-hierarchies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protocol Hierarchies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-oriented-connectionless-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      两种服务 Connection-Oriented / Connectionless Service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="两种服务 Connection-Oriented / Connectionless Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-oriented-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      面向连接的服务 (Connection-Oriented Service)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectionless-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      无连接服务 (Connectionless Service)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      服务原语 Service Primitives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#services-vs-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      服务与协议的区别 Services vs. Protocols
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#osi-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      OSI参考模型 (7层)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcpip-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCP/IP参考模型 (4层) （内容需要进一步补充）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#standardizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standardizations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantitative-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantitative Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quantitative Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#some-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      Some History
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#network-technology-from-local-to-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Technology: from local to global
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples-of-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples of Networks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-protocols-network-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Protocols / Network Software
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Protocols / Network Software">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#design-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      设计目标 (Design Goals)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocol-hierarchies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protocol Hierarchies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-oriented-connectionless-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      两种服务 Connection-Oriented / Connectionless Service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="两种服务 Connection-Oriented / Connectionless Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-oriented-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      面向连接的服务 (Connection-Oriented Service)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectionless-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      无连接服务 (Connectionless Service)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      服务原语 Service Primitives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#services-vs-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      服务与协议的区别 Services vs. Protocols
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#osi-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      OSI参考模型 (7层)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcpip-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCP/IP参考模型 (4层) （内容需要进一步补充）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#standardizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standardizations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantitative-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantitative Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quantitative Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#some-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      Some History
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>0 Overview</h1>
+
+<h2 id="network-technology-from-local-to-global">Network Technology: from local to global</h2>
+<p>所有计算机网络都可以从两个最重要的维度进行分类： <strong>传播技术</strong> 与 <strong>规模</strong></p>
+<ul>
+<li>
+<p><strong>传输技术 (Transmission Technology)</strong></p>
+<ul>
+<li><strong>广播链路 (Broadcast Links)</strong>: 所有设备共享一个通信信道，任何一台机器发送的数据包都会被所有其他机器接收。数据包通过唯一的 <strong>地址 (Address)</strong> 字段来指定接收方。这种操作模式被称为 <strong>广播（Broadcasting）</strong> ，一些广播系统还支持向机器的一个子集进行传输，这被称为 <strong>多播（Multicasting）</strong>。</li>
+<li><strong>点对点链路 (Point-to-Point Links)</strong>: 连接单个成对的机器。数据包从源到目的地可能需要经过多个中间节点转发，因此 <strong>路由算法 (Routing Algorithm)</strong> 在此技术中至关重要。 只有一个发送方和一个接收方的点对点传输有时被称为 <strong>单播（Unicasting）</strong>。</li>
+</ul>
+</li>
+<li>
+<p><strong>规模 (Scale)</strong></p>
+<p>网络根据其覆盖的物理距离分为不同类型，从个人局域网 (PAN)、局域网 (LAN)、城域网 (MAN) 到广域网 (WAN) 和最终的互联网 (The Internet)。不同的物理距离尺度下，会使用不同的网络技术。</p>
+</li>
+</ul>
+<p><img alt="根据规模分类的内部网络" src="../assets/Note_Lecture1/image.png" /></p>
+<p>（下面内容需要进一步补充）</p>
+<ul>
+<li>PAN： let devices communicate over the range of a person. Bluetooth</li>
+<li>LAN</li>
+<li>MAN(Metropolitan Area Network): 有线电视网络，802.16（WiMax）</li>
+<li>WAN：ISP，VPN，蜂窝移动网络</li>
+<li>Internetworks</li>
+</ul>
+<h2 id="examples-of-networks">Examples of Networks</h2>
+<ol>
+<li>
+<p><strong>互联网 (The Internet)</strong></p>
+<ul>
+<li>起源于1969年的<strong>ARPANET</strong>，其设计初衷是为了在军事攻击下仍能保持通信，因此采用了分布式结构，以保证<strong>冗余性 (Redundancy)</strong>。</li>
+<li>互联网基于<strong>包交换 (Packet Switching)</strong>。每个数据包 (Packet) 被独立路由，即使部分路由器失效，系统也能动态地重新配置路径，保证了网络的鲁棒性。</li>
+<li>经历了 ARPANET 到 NSFNET，再到商业化的演进。期间诞生了众多关键技术，如<strong>DNS</strong>、<strong>WWW</strong> 和 <strong>HTTP协议</strong> 。</li>
+<li>呈现出从早期的严格层级结构（Tier-1/Tier-2 ISP）向更扁平化的结构演变。家庭接入方式主要有光纤 (Fiber to the Home, FTTH)、DSL 和有线电视网络 (Cable)。</li>
+</ul>
+</li>
+<li>
+<p><strong>移动网络 (Mobile Networks)</strong></p>
+<ul>
+<li>移动网络最稀缺的资源是 <strong>无线电频谱 (Radio Spectrum)</strong> 。为了最大化利用有限的频谱，移动网络采用了 <strong>蜂窝网络 (Cellular Network)</strong> 的设计。<ul>
+<li><strong>蜂窝概念 (Cellular Concept)</strong>：1947年由贝尔实验室提出的，将地理区域划分为多个六边形小区 (Cell)</li>
+<li><strong>频率复用（Frequency Reuse）</strong>：相邻小区使用不同频率以避免干扰，而相隔较远的小区则可以 <strong>复用</strong> 相同的频率，从而极大地提升了系统容量。</li>
+</ul>
+</li>
+<li><strong>交换技术</strong>:<ul>
+<li>早期电话网使用<strong>电路交换 (Circuit Switching)</strong>，通信前必须建立一条专用的端到端连接。</li>
+<li>现代4G/5G移动网络的核心网已演变为与互联网一致的<strong>包交换（Packet Switching）</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>无线局域网 (Wireless LANs - WiFi)</strong></p>
+<ul>
+<li><strong>基本原理</strong>: 基于<strong>IEEE 802.11</strong>标准，通常工作在免许可 (unlicensed)的ISM频段。（你也不想让帽子叔叔找你吧）</li>
+<li><strong>网络结构</strong>: 常见的是基础设施模式，客户端设备通过一个 <strong>接入点 (Access Point, AP)</strong> 连接到有线网络。AP的角色类似于移动网络中的基站 。</li>
+<li><strong>挑战</strong>:<ul>
+<li><strong>多径衰落 (Multipath Fading)</strong> 问题，即信号通过不同路径（反射）到达接收端，可能因相位不同而相互抵消或增强，导致信号强度剧烈波动。WiFi采用 <strong>正交频分复用（OFDM）</strong> 和 <strong>多输入多输出（MIMO）</strong> 来解决多径衰落。</li>
+<li>作为广播网络，多设备同时传输会产生<strong>冲突 (Collision)</strong>。WiFi采用<strong>CSMA (载波侦听多路访问)</strong> 机制来处理此问题，其思想源于早期的ALOHA网络。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="network-protocols-network-software">Network Protocols / Network Software</h2>
+<h3 id="design-goals"><strong>设计目标 (Design Goals)</strong></h3>
+<ul>
+<li><strong>Reliability</strong>: 通过错误检测与纠正、路由算法等方式，在不可靠的组件上构建可靠的网络。</li>
+<li><strong>Resource Allocation</strong>: 如何公平有效地共享有限的网络资源，涉及流量控制 (Flow Control) 和拥塞控制 (Congestion Control)。<ul>
+<li>使用 <strong>统计多路复用  (Statistical Multiplexing)</strong> 技术提高链路利用率<blockquote>
+<p>核心观念：<em>网络中的数据传输是“突发性”的，大多数用户不会在同一时刻满负荷发送数据。</em> 因此，网络允许多个用户共享同一条链路，谁有数据就谁用。</p>
+</blockquote>
+</li>
+<li>使用流量控制防止快速发送方用数据压垮慢速接收方。</li>
+</ul>
+</li>
+<li><strong>Evolvability</strong>: 网络能够持续发展和集成新技术。<ul>
+<li>使用 <strong>分层 (Protocol Layering)</strong> 来支持新技术集成：将一个大的总问题分割为用多个层各自解决的子问题，然后在各自的协议层上进行改进，对其他层隐藏具体的实现细节。<blockquote>
+<p>比如我把最底层中使用的传数据的电话线都换成光纤，但是传来的比特数据还是一样的。因为层与层之间只通过 定义明确 且 稳定 的接口进行通信，也就是说别的层只关心接口返回的数据，不在乎你怎么来的</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><strong>Security</strong>: 保护网络免受攻击。</li>
+</ul>
+<h3 id="protocol-hierarchies">Protocol Hierarchies</h3>
+<ul>
+<li>
+<p>核心思想 - <strong>分层 (Protocol Layering)</strong></p>
+<p>将复杂的网络功能划分为一系列有序的层次，每一层都建立在下层之上，并为上层提供服务。</p>
+</li>
+<li>
+<p>对等层之间虚拟通信:</p>
+<p>不同主机上的 <strong>对等层 (Peers)</strong> 之间使用 <strong>协议（Protocol）</strong> 来进行相互通信（layer n 之间使用 layer n protocol），这种通信是逻辑意义上的虚拟通信（下图中的虚线）</p>
+<p>实际的数据交流是通过两个主机间的物理介质。实际的数据流是垂直的。数据自顶向下穿过协议栈直到最底部的 Layer 1。Layer 1 之下则是传输实际信息的物理介质。</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Protocol</strong> 定义了两个或多个通信实体之间所交换消息的格式与顺序，以及在发送和/或接收消息或其它事件时所采取的行动。（<em>A protocol defines the </em><em>format</em><em> and the </em><em>order</em><em> of messages exchanged between two or more communication entities, as well as the </em><em>actions</em><em> taken on the transmission and/or receipt of a message or other event.</em>）</p>
+<p><strong>Network architecture</strong>: a set of layers and protocols</p>
+<p><strong>Protocol stack</strong>: a list of the protocols used by a certain system, one protocol per layer</p>
+<p>应该可以认为 Protocol stack 是 Network architecture 的具体实现？</p>
+</div>
+<ul>
+<li>
+<p>上下层之间接口通讯：</p>
+<p>同一个主机上的相邻层之间使用 <strong>接口（Interfaces）</strong> 来实现服务，传递信息。</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Interface</strong> 定义了 下层 提供给 对上层可用的 运算与服务（<em>The interface defines which </em><em>primitive operations</em><em> and </em><em>services</em><em> the lower layer makes availableto the upper one.</em>）。</p>
+</div>
+<p><img alt="层，协议，接口" src="../assets/Note_Lecture1/image-1.png" /></p>
+<ul>
+<li>
+<p><strong>数据封装与打包（Encapsulation and Decapsulation）</strong></p>
+<p>当应用程序发送数据自顶向下穿过协议栈时，每一层都会添加自己的控制信息（报头 Header），有时还有报尾（Trailer），这个过程称为封装 (Encapsulation)。 同理，应用数据接受数据是自底向上的，每一层都会根据已有的报头或报尾进行 解包（Decapsulation），然后传给更高一层。如此直到获得最终的数据。</p>
+</li>
+</ul>
+<p><img alt="alt text" src="../assets/Note_Lecture1/image-3.png" /></p>
+<details class="example">
+<summary>数据封装的实例</summary>
+<p>举个例子，假如我现在要上睿站。现在我和阿姨的服务器完成了TCP三次握手和TLS握手；协议栈用 TCP/IP 五层模型（也就是下面提到的课上使用的模型，正好对应上面的图）为例（应用层 Layer 5、传输层 L4、网络层 L3、数据链路层 L2、物理层 L1）。</p>
+<p>总的来说，就是发送 HTTP 请求（拿首页），浏览器发出的请求数据自顶向下封装，然后从电脑 → 服务器</p>
+<ul>
+<li>
+<p>L5 应用层，也就是你的浏览器发的明文内容差不多长这样：</p>
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">&lt;www.bilibili.com&gt;</span>
+<span class="na">User-Agent</span><span class="o">:</span> <span class="l">...</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">...</span>
+</code></pre></div>
+<p>这时的数据为数据 (Data) 或 报文 (Message)。（上图里 L5 对应的 M）</p>
+</li>
+<li>
+<p>L4 传输层（TCP）</p>
+<p>TCP协议会给HTTP报文加上一个 <strong>TCP头部 (TCP Header)</strong> （上图里 L4 对应的 H4）。加上 TCP 头部的数据块叫做 报文段（Segment）。（上图中包含 L4 与 M 的整个块）</p>
+</li>
+<li>
+<p>L3 网络层（IP）</p>
+<p>由于网络设备的 <strong>最大传输单元（MTU）</strong> 有限，网络层需要将从传输层接收到的数据流分割成一个个大小合适的数据段，这是 <strong>分片 (Fragmentation)</strong>。</p>
+<p>然后，网络层通过 IP 协议给每个块加上各自的 IP头部 （上图 L3 中两个块各自拥有的 H3，这两个 H3 大部分内容相同，但也有为了区分不同数据包而做出差异的信息），最终形成多个数据段。加上IP头部的数据块被称为 <strong>数据包 (Packet)</strong>。</p>
+</li>
+<li>
+<p>L2 链路层（以太网）</p>
+<p>以太网协议给 IP数据包 加上 帧头 (Header) 和 帧尾 (Trailer)（上图 L2 中两个块各自的 H2 与 L2）。这个最终的包装被称为 <strong>帧 (Frame)</strong>。</p>
+<p>帧头（以太网头）包含控制信息，如<strong>源和目的地的MAC地址</strong>。</p>
+<p>帧尾用来进行错误检测，其中的核心字段就是 FCS (Frame Check Sequence)。</p>
+</li>
+<li>
+<p>L1 物理层：比特流发送</p>
+<p>一个典型报文在网卡上长这样：</p>
+<div class="highlight"><pre><span></span><code>[以太网头][IP头][TCP头][TLS 记录头][HTTP 请求密文负载][FCS]
+</code></pre></div>
+</li>
+</ul>
+</details>
+<h3 id="connection-oriented-connectionless-service">两种服务 Connection-Oriented / Connectionless Service</h3>
+<p>网络中的任何一层都可以选择为它的上层提供两种截然不同的服务模式：</p>
+<ol>
+<li><strong>面向连接 (connection-oriented)</strong>: 在传输数据<strong>之前</strong>，必须先建立一个专用的逻辑连接。（类似打电话）</li>
+<li><strong>无连接 (connectionless)</strong>: 不需要预先建立连接，可以直接发送数据。（类似邮政系统）</li>
+</ol>
+<hr />
+<h4 id="connection-oriented-service">面向连接的服务 (Connection-Oriented Service)</h4>
+<p>先“拨号”建立连接，然后双方“通话”传输数据，最后“挂断”释放连接。这是一个严格的、有序的过程。</p>
+<p><strong>工作流程（以打电话为例）：</strong></p>
+<ol>
+<li><strong>建立连接 (Establish a connection)</strong>:<ul>
+<li>你拿起电话，拨打对方号码。</li>
+<li>网络（电信系统）会为你找到一条通往对方的路径，并发出“振铃”信号。</li>
+<li>对方接起电话，此时一条专用的通话线路（逻辑上的）就建立好了。</li>
+</ul>
+</li>
+<li><strong>使用连接 (Use the connection)</strong>:<ul>
+<li>你们开始对话。你说的话会按照你说话的顺序，不多不少、不重复地传到对方耳朵里。整个通话过程都使用这条预先建立好的线路。</li>
+</ul>
+</li>
+<li><strong>释放连接 (Release the connection)</strong>:<ul>
+<li>通话结束，任何一方挂断电话。</li>
+<li>这条通话线路被拆除，网络资源被释放，可以给其他人使用。</li>
+</ul>
+</li>
+</ol>
+<p>实际例子，高可靠性的应用：文件传输、网页浏览 (FTP/HTTP):</p>
+<hr />
+<h4 id="connectionless-service">无连接服务 (Connectionless Service)</h4>
+<p>每个数据单元（packet）都像一封独立的信件，有自己的“地址”，然后直接扔进“邮筒”。它们被独立处理和投递。</p>
+<p>工作流程（以寄明信片为例）：</p>
+<ul>
+<li>你写了三张明信片给同一个人。</li>
+<li>你把它们分别贴上邮票和地址，在不同时间扔进邮筒。</li>
+<li>邮政系统会独立处理每一张明信片。它们可能会经过不同的城市、不同的分拣中心。</li>
+<li><strong>结果</strong>：这三张明信片可能会<strong>乱序到达</strong>，甚至某一张<strong>可能在路上丢失了</strong>，而且邮局<strong>不会</strong>通知你。</li>
+</ul>
+<p>两种发送方式：</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">存储转发 (Store-and-forward switching)</label><label for="__tabbed_1_2">直通交换 (Cut-through switching)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>路由器必须读完整个数据包才会开始发送</li>
+<li>可以在转发前检查数据包完整性，可靠性更高。</li>
+<li>速度慢，因为必须等待接收完整个数据包。</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>路由器一旦读取到数据包头部的目标地址，就立刻开始向目标端口转发数据，即使整个数据包还没接收完。</li>
+<li>延迟低，速度快。</li>
+<li>如果数据包的后半部分有错误，它也已经把错误的数据转发给下一站了。</li>
+</ul>
+</div>
+</div>
+</div>
+<p>实际例子，要求<strong>快速响应和低延迟</strong>的应用：</p>
+<p>首先就是<strong>打游戏</strong>: 你在游戏中的位置、动作等信息需要尽快发送给服务器。使用无连接服务（如 <strong>UDP协议</strong>），每个数据包都独立发送。</p>
+<p><strong>DNS查询</strong>: 向DNS服务器查询一个网址对应的IP地址。这是一个简单的“问-答”过程（<strong>Request-reply service</strong>），用无连接服务效率最高。</p>
+<hr />
+<div class="admonition note">
+<p class="admonition-title">面向连接是否一定可靠？无连接是否一定不可靠？</p>
+<p><strong>不对</strong>。 “面向连接/无连接”和“可靠/不可靠”是两个可以组合的属性。<strong>是否可靠与是否面向连接没有必然关系</strong>。</p>
+<ol>
+<li>
+<p>Reliable 的面向连接服务 (Reliable connection-oriented service) 分为两个主要类别：<strong>message sequences (消息序列)</strong>: 保持消息的边界。比如你发送了两个独立的文件，接收方会收到两个完整、独立的文件；以及 <strong>byte stream (字节流)</strong>: 不保留消息边界，只看作一连串的字节。<strong>TCP</strong> 就是字节流服务，它不在乎你调用了多少次发送函数，只把所有数据看作一个连续的流。</p>
+</li>
+<li>
+<p>Unreliable 的无连接服务 (Unreliable connectionless service) 被称为 <strong>数据报服务 (Datagram service)</strong>。</p>
+</li>
+<li>
+<p>无连接服务也可是 Reliable 的，这被称为 <strong>有确认的数据报服务 (Acknowledged datagram service)</strong>。比如发短信。</p>
+</li>
+<li>
+<p>面向连接的服务也可能 Unreliable ，比如 oopz，teamspeak，微信电话里面的 VoIP（语音传输协议）。在这里不能以 Transit delay 为代价用于验证数据。</p>
+</li>
+</ol>
+<p><img alt="Six common connection-oriented and connectionless services" src="../assets/Note_Lecture1/image-9.png" /></p>
+</div>
+<hr />
+<div class="admonition tip">
+<p class="admonition-title">为什么有人会用不可靠通信</p>
+<p>这里翻了下教材的话。</p>
+<blockquote>
+<p>“使用不可靠通信”这个概念起初可能会令人困惑。毕竟，为什么会有人宁愿选择不可靠通信，而非可靠通信呢？</p>
+<p>首先，在某个特定的层级，可靠通信（也就是我们所说的带确认机制的通信）本身可能就无法提供。例如，以太网就不提供可靠的通信，数据包在传输过程中偶尔会受损。这个问题需要由更高层级的协议来解决。具体来说，<strong>许多可靠的服务，其实就是构建于不可靠的数据报服务之上的</strong>。</p>
+<p>其次，提供可靠服务所带来的固有延迟，可能是无法接受的，尤其是在多媒体这类实时应用中。</p>
+<p>基于这些原因，可靠与不可靠的通信方式是并存的。</p>
+</blockquote>
+</div>
+<div class="admonition note">
+<p class="admonition-title">总结与对比表格</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">特性</th>
+<th style="text-align: left;">面向连接的服务 (Connection-Oriented)</th>
+<th style="text-align: left;">无连接的服务 (Connectionless)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>需要建立连接吗？</strong></td>
+<td style="text-align: left;"><strong>是</strong></td>
+<td style="text-align: left;"><strong>否</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>数据路径</strong></td>
+<td style="text-align: left;">所有数据沿同一条预定路径传输</td>
+<td style="text-align: left;">每个数据包独立选路，路径可能不同</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>数据顺序</strong></td>
+<td style="text-align: left;"><strong>保证按序到达</strong></td>
+<td style="text-align: left;"><strong>不保证顺序</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>可靠性</strong></td>
+<td style="text-align: left;">通常是可靠的（如TCP），有纠错和重传机制</td>
+<td style="text-align: left;">通常是不可靠的（如UDP），“尽力而为”</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="service-primitives">服务原语 Service Primitives</h3>
+<p>服务是由一组可供用户进程访问该服务的原语（primitive，即操作）来正式定义的。这些原语指示服务执行某个动作，或报告某个由对等实体（peer entity）所执行的动作。</p>
+<p>如果协议栈位于操作系统内（通常情况如此），那么这些原语通常就是系统调用（system call）。</p>
+<p>这些调用会触发一次陷入内核模式的操作，随即将机器的控制权转交给操作系统，由操作系统来发送必要的数据包。</p>
+<p><img alt="alt text" src="../assets/Note_Lecture1/image-10.png" /></p>
+<p><img alt="alt text" src="../assets/Note_Lecture1/image-11.png" /></p>
+<p>为什么需要这种看似复杂的面向连接服务？因为在真实的网络环境中，存在消息过大、传输错误、数据包丢失和乱序等问题。简单的无连接服务无法处理这些复杂情况，而面向连接的服务通过建立和管理连接，能够提供一个可靠、有序的数据流，从而确保通信的完整性和正确性。</p>
+<h3 id="services-vs-protocols">服务与协议的区别 Services vs. Protocols</h3>
+<ul>
+<li><strong>服务 (Service)</strong>: 定义了<strong>下层为上层提供的功能</strong>。它是一种<strong>垂直</strong>关系，发生在同一台计算机的相邻层之间。</li>
+<li><strong>协议 (Protocol)</strong>: 实现服务的规则集合。它是一种<strong>水平</strong>关系，是不同计算机上 <strong>对等实体 (peer entities)</strong> 之间通信的约定。</li>
+<li>实体(Entity)使用<strong>协议</strong>来实现它们定义的<strong>服务</strong>。只要对上层提供的服务不变，底层的协议可以自由更改。</li>
+</ul>
+<blockquote>
+<p>例如，服务可以看作是 OOP 里面的一个对象，而协议是其中的一个具体的函数实现。</p>
+</blockquote>
+<p><img alt="alt text" src="../assets/Note_Lecture1/image-8.png" /></p>
+<h2 id="reference-models">Reference Models</h2>
+<p>将分层思想标准化，形成了两种主要的参考模型。</p>
+<h3 id="osi-7"><strong>OSI参考模型 (7层)</strong></h3>
+<ul>
+<li>理论上完善的de jure，并未在实践中完全实现。</li>
+<li>分层结构: 应用层、表示层、会话层、传输层、网络层、数据链路层、物理层。</li>
+<li>数据单元在不同层次有不同名称，如比特 (Bit)、帧 (Frame)、包 (Packet)，再往上就直接叫各自的 Data Unit。</li>
+<li><strong>关于 Communication/Internel subnet bondary</strong>:</li>
+<li>传输层 (Layer 4) 及以上是真正的<strong>端到端 (end-to-end)</strong> 层<ul>
+<li>整条线路是通信两端的主机进程构成的两点一线。</li>
+<li>这些层中的有关协议，例如 TCP：端口、序号、ACK、重传、流量/拥塞控制、TLS 加密等状态都 <strong>只在两端维护</strong> ，中间的路由器不会来凑热闹。</li>
+<li>因此路径怎么绕、经过多少路由器都不影响“这条传输连接”的逻辑，它是一条端到端的会话。</li>
+</ul>
+</li>
+<li>网络层 (Layer 3) 及以下是 <strong>链式 (chained)</strong> 的，数据包需要经过中间路由器逐跳处理。<ul>
+<li>L3 IP 报文要在每一跳被路由器查看并做决定：查表（Forwading Table）选下一跳、把 TTL/Hop Limit 减 1（类似于一个“过期时间”，减到 0 时直接丢弃），可能做分片或丢弃。</li>
+<li>L2（以太网/Wi‑Fi…）只在一段物理链路内有效：每跳一次，旧的帧被拆掉，换成下一段链路的帧。例如说，MAC 地址换成“本路由器出接口的源 MAC + 下一跳的目的 MAC”；并重新计算FCS。</li>
+<li>L1 只是把比特在该段介质上发出去。</li>
+<li>所以从源到目的其实是由很多“邻接关系”首尾相接的链，<strong>每一段都要本地处理一次</strong>。</li>
+</ul>
+</li>
+<li><strong>它不是一个 Internet Architecture，因为它不指定每一层使用什么样的服务和协议</strong></li>
+</ul>
+<p><img alt="alt text" src="../assets/Note_Lecture1/image-6.png" /></p>
+<h3 id="tcpip-4"><strong>TCP/IP参考模型 (4层)</strong> （内容需要进一步补充）</h3>
+<ul>
+<li>互联网实际使用的de facto。其协议先于模型出现。</li>
+<li>分层结构: 应用层、传输层、网络层 (Internet)、链路层。</li>
+<li>TCP/IP模型省略了OSI的会话层和表示层，其链路层对应OSI的物理层和数据链路层。</li>
+<li>每个层次都包含一系列核心协议，如应用层的HTTP/DNS，传输层的TCP/UDP，网络层的IP/ICMP等</li>
+</ul>
+<p><img alt="TCP IP Model" src="../assets/Note_Lecture1/image-5.png" /></p>
+<p><img alt="Protocol used in TCP IP Model" src="../assets/Note_Lecture1/image-7.png" /></p>
+<blockquote>
+<p>为了教学方便，课程采用一个综合的五层模型：<strong>物理层、链路层、网络层、传输层、应用层</strong>。</p>
+</blockquote>
+<h2 id="standardizations">Standardizations</h2>
+<p>比较重要的：</p>
+<ol>
+<li>802.3 Ethernet</li>
+<li>802.11 Wireless LANs (WiFi)</li>
+<li>802.15 PANs (蓝牙，Zigbee)</li>
+</ol>
+<h2 id="quantitative-metrics">Quantitative Metrics</h2>
+<p>从工程角度量化网络性能的关键指标：</p>
+<ul>
+<li>
+<p><strong>时延 (Delay)</strong>: 数据从一端到另一端所需的时间，由四部分组成：</p>
+<ol>
+<li><strong>处理时延 (Processing Delay)</strong>: 路由器检查包头的时间。</li>
+<li><strong>排队时延 (Queuing Delay)</strong>: 在路由器缓存中等待的时间。取决于</li>
+<li><strong>传输时延 (Transmission Delay / Store-and-forward Delay)</strong>: 将整个包推送到链路上的时间 (<span class="arithmatex">\(\frac{\text{包长度 }L}{\text{带宽 }R}\)</span>)。</li>
+<li><strong>传播时延 (Propagation Delay)</strong>: 信号在物理介质中传播的时间 (距离 / 传播速度)。</li>
+</ol>
+</li>
+<li>
+<p><strong>丢包 (Loss)</strong>: 当路由器队列满时，新到达的包会被丢弃。</p>
+</li>
+<li>
+<p><strong>吞吐量 (Throughput)</strong>: 单位时间内成功传输的数据量。<strong>由整个路径上带宽最低的“瓶颈链路” (bottleneck link) 决定</strong>。</p>
+</li>
+</ul>
+<h3 id="some-history">Some History</h3>
+<p>The history of the Internet (ARPANET(1969) → NSFNET(1986) →
+Internet)</p>
+<ul>
+<li>Leonard Kleinrock (Packet switching, 1961-1964)</li>
+<li>Ray Tomlinson (第一个email软件, 1972)</li>
+<li>Vinton Cerf and Robert Khan (TCP/IP, 1974)</li>
+<li>Tim Berners-Lee (万维网, 1989)</li>
+<li>Marc Andreessen (Mosaic浏览器, 1993)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "search.suggest", "search.highlight", "header.autohide"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
