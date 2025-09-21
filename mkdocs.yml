@@ -1,0 +1,48 @@
+site_name: Axeria Notebook
+site_url: https://nepl1t.github.io/axeria-note
+repo_url: https://github.com/nepl1t/axeria-note
+repo_name: nepl1t/axeria-note
+theme:
+  name: material
+  palette: 
+    scheme: default
+    primary: white
+    accent: pink
+  language: zh
+  icon:
+    repo: fontawesome/brands/github
+    logo: fontawesome/brands/mixer
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - search.suggest
+    - search.highlight
+    - header.autohide
+markdown_extensions:
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.critic
+  - pymdownx.mark
+  - pymdownx.caret
+  - pymdownx.tilde
+  - pymdownx.keys
+  - pymdownx.details
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+extra_javascript:
+  - javascripts/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+      jieba_dict: dict.txt
