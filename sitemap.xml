@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://nepl1t.github.io/axeria-note/index.html</loc>
+         <lastmod>2025-09-22</lastmod>
+    </url>
+    <url>
+         <loc>https://nepl1t.github.io/axeria-note/Other%20CS%20Courses/index.html</loc>
+         <lastmod>2025-09-22</lastmod>
+    </url>
+    <url>
+         <loc>https://nepl1t.github.io/axeria-note/ZJU%20Courses/index.html</loc>
+         <lastmod>2025-09-22</lastmod>
+    </url>
+    <url>
+         <loc>https://nepl1t.github.io/axeria-note/ZJU%20Courses/Computer%20Network/0%20Overview.html</loc>
+         <lastmod>2025-09-22</lastmod>
+    </url>
 </urlset>
