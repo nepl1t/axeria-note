@@ -1,6 +1,7 @@
 site_name: Axeria Notebook
-site_url: https://nepl1t.github.io/axeria-note
-repo_url: https://github.com/nepl1t/axeria-note
+repo_url: https://github.com/nepl1t/axeria-note/
+site_url: https://nepl1t.github.io/axeria-note/
+use_directory_urls: false
 repo_name: nepl1t/axeria-note
 theme:
   name: material
@@ -45,4 +46,3 @@ plugins:
         - zh
         - en
       separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
-      jieba_dict: dict.txt
