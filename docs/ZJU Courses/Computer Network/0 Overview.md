@@ -1,10 +1,12 @@
+# 0 Overview
+
 ## Network Technology: from local to global
 
 所有计算机网络都可以从两个最重要的维度进行分类： **传播技术** 与 **规模**
 
 * **传输技术 (Transmission Technology)**
-    * **广播链路 (Broadcast Links)**: 所有设备共享一个通信信道，任何一台机器发送的数据包都会被所有其他机器接收。数据包通过唯一的 **地址 (Address)** 字段来指定接收方。这种操作模式被称为 **广播（Broadcasting）** ，一些广播系统还支持向机器的一个子集进行传输，这被称为 **多播（Multicasting）**。
-    * **点对点链路 (Point-to-Point Links)**: 连接单个成对的机器。数据包从源到目的地可能需要经过多个中间节点转发，因此 **路由算法 (Routing Algorithm)** 在此技术中至关重要。 只有一个发送方和一个接收方的点对点传输有时被称为 **单播（Unicasting）**。
+  * **广播链路 (Broadcast Links)**: 所有设备共享一个通信信道，任何一台机器发送的数据包都会被所有其他机器接收。数据包通过唯一的 **地址 (Address)** 字段来指定接收方。这种操作模式被称为 **广播（Broadcasting）** ，一些广播系统还支持向机器的一个子集进行传输，这被称为 **多播（Multicasting）**。
+  * **点对点链路 (Point-to-Point Links)**: 连接单个成对的机器。数据包从源到目的地可能需要经过多个中间节点转发，因此 **路由算法 (Routing Algorithm)** 在此技术中至关重要。 只有一个发送方和一个接收方的点对点传输有时被称为 **单播（Unicasting）**。
 
 * **规模 (Scale)**
 
@@ -53,11 +55,11 @@
 * **Reliability**: 通过错误检测与纠正、路由算法等方式，在不可靠的组件上构建可靠的网络。
 * **Resource Allocation**: 如何公平有效地共享有限的网络资源，涉及流量控制 (Flow Control) 和拥塞控制 (Congestion Control)。
     * 使用 **统计多路复用  (Statistical Multiplexing)** 技术提高链路利用率
-    > 核心观念：*网络中的数据传输是“突发性”的，大多数用户不会在同一时刻满负荷发送数据。* 因此，网络允许多个用户共享同一条链路，谁有数据就谁用。
+      > 核心观念：*网络中的数据传输是“突发性”的，大多数用户不会在同一时刻满负荷发送数据。* 因此，网络允许多个用户共享同一条链路，谁有数据就谁用。
     * 使用流量控制防止快速发送方用数据压垮慢速接收方。
 * **Evolvability**: 网络能够持续发展和集成新技术。
     * 使用 **分层 (Protocol Layering)** 来支持新技术集成：将一个大的总问题分割为用多个层各自解决的子问题，然后在各自的协议层上进行改进，对其他层隐藏具体的实现细节。
-    > 比如我把最底层中使用的传数据的电话线都换成光纤，但是传来的比特数据还是一样的。因为层与层之间只通过 定义明确 且 稳定 的接口进行通信，也就是说别的层只关心接口返回的数据，不在乎你怎么来的
+      > 比如我把最底层中使用的传数据的电话线都换成光纤，但是传来的比特数据还是一样的。因为层与层之间只通过 定义明确 且 稳定 的接口进行通信，也就是说别的层只关心接口返回的数据，不在乎你怎么来的
 * **Security**: 保护网络免受攻击。
 
 ### Protocol Hierarchies
@@ -184,12 +186,12 @@
 两种发送方式：
 
 === "存储转发 (Store-and-forward switching)"
-    * 路由器必须读完整个数据包才会开始发送
+    *路由器必须读完整个数据包才会开始发送
     * 可以在转发前检查数据包完整性，可靠性更高。
-    * 速度慢，因为必须等待接收完整个数据包。
+    *速度慢，因为必须等待接收完整个数据包。
 === "直通交换 (Cut-through switching)"
     * 路由器一旦读取到数据包头部的目标地址，就立刻开始向目标端口转发数据，即使整个数据包还没接收完。
-    * 延迟低，速度快。
+    *延迟低，速度快。
     * 如果数据包的后半部分有错误，它也已经把错误的数据转发给下一站了。
 
 实际例子，要求**快速响应和低延迟**的应用：
@@ -207,9 +209,9 @@
 
     2. Unreliable 的无连接服务 (Unreliable connectionless service) 被称为 **数据报服务 (Datagram service)**。
 
-    3. 无连接服务也可是 Reliable 的，这被称为 **有确认的数据报服务 (Acknowledged datagram service)**。比如发短信。
+    3. 无连接服务也可是 Reliable 的，这被称为 **有确认的数据报服务 (Acknowledged datagram service)**。比如发短信，WiFi。
 
-    4. 面向连接的服务也可能 Unreliable ，比如 oopz，teamspeak，微信电话里面的 VoIP（语音传输协议）。在这里不能以 Transit delay 为代价用于验证数据。
+    4. 面向连接的服务也可能 Unreliable ，比如 SCTP， oopz，teamspeak，微信电话里面的 VoIP（语音传输协议）。在这里不能以 Transit delay 为代价用于验证数据。
 
     ![Six common connection-oriented and connectionless services](./assets/Note_Lecture1/image-9.png)
 
@@ -228,7 +230,7 @@
     > 基于这些原因，可靠与不可靠的通信方式是并存的。
 
 !!! note "总结与对比表格"
-    
+
     | 特性 | 面向连接的服务 (Connection-Oriented) | 无连接的服务 (Connectionless) |
     | :--- | :--- | :--- |
     | **需要建立连接吗？** | **是** | **否** |
@@ -256,7 +258,7 @@
 * **协议 (Protocol)**: 实现服务的规则集合。它是一种**水平**关系，是不同计算机上 **对等实体 (peer entities)** 之间通信的约定。
 * 实体(Entity)使用**协议**来实现它们定义的**服务**。只要对上层提供的服务不变，底层的协议可以自由更改。
 
-> 例如，服务可以看作是 OOP 里面的一个对象，而协议是其中的一个具体的函数实现。
+!!! tips "例如，服务可以看作是 OOP 里面的一个对象，而协议是其中的一个具体的函数实现。"
 
 ![alt text](./assets/Note_Lecture1/image-8.png)
 
@@ -265,6 +267,8 @@
 将分层思想标准化，形成了两种主要的参考模型。
 
 ### **OSI参考模型 (7层)**
+
+![alt text](./assets/Note_Lecture1/image-6.png)
 
 * 理论上完善的de jure，并未在实践中完全实现。
 * 分层结构: 应用层、表示层、会话层、传输层、网络层、数据链路层、物理层。
@@ -278,23 +282,22 @@
     * L3 IP 报文要在每一跳被路由器查看并做决定：查表（Forwading Table）选下一跳、把 TTL/Hop Limit 减 1（类似于一个“过期时间”，减到 0 时直接丢弃），可能做分片或丢弃。
     * L2（以太网/Wi‑Fi…）只在一段物理链路内有效：每跳一次，旧的帧被拆掉，换成下一段链路的帧。例如说，MAC 地址换成“本路由器出接口的源 MAC + 下一跳的目的 MAC”；并重新计算FCS。
     * L1 只是把比特在该段介质上发出去。
-    * 所以从源到目的其实是由很多“邻接关系”首尾相接的链，**每一段都要本地处理一次**。
+    * 所以从 src 到 dst 其实是由很多“邻接关系”首尾相接的链，**每一段都要本地处理一次**。
 * **它不是一个 Internet Architecture，因为它不指定每一层使用什么样的服务和协议**
 
-![alt text](./assets/Note_Lecture1/image-6.png)
-
 ### **TCP/IP参考模型 (4层)** （内容需要进一步补充）
+
+![TCP IP Model](./assets/Note_Lecture1/image-5.png)
 
 * 互联网实际使用的de facto。其协议先于模型出现。
 * 分层结构: 应用层、传输层、网络层 (Internet)、链路层。
 * TCP/IP模型省略了OSI的会话层和表示层，其链路层对应OSI的物理层和数据链路层。
 * 每个层次都包含一系列核心协议，如应用层的HTTP/DNS，传输层的TCP/UDP，网络层的IP/ICMP等
 
-![TCP IP Model](./assets/Note_Lecture1/image-5.png)
 
 ![Protocol used in TCP IP Model](./assets/Note_Lecture1/image-7.png)
 
-> 为了教学方便，课程采用一个综合的五层模型：**物理层、链路层、网络层、传输层、应用层**。
+!!! attention "为了教学方便，课程采用一个综合的五层模型：**物理层、链路层、网络层、传输层、应用层**。"
 
 ## Standardizations
 
@@ -318,7 +321,7 @@
 
 * **吞吐量 (Throughput)**: 单位时间内成功传输的数据量。**由整个路径上带宽最低的“瓶颈链路” (bottleneck link) 决定**。
 
-### Some History
+## Some History
 
 The history of the Internet (ARPANET(1969) → NSFNET(1986) →
 Internet)
@@ -328,3 +331,76 @@ Internet)
 * Vinton Cerf and Robert Khan (TCP/IP, 1974)
 * Tim Berners-Lee (万维网, 1989)
 * Marc Andreessen (Mosaic浏览器, 1993)
+
+## Homework
+
+??? "Which of the OSI layers handlers each of the following:"
+    (a) Dividing the transmitted bit stream into frames: **Data link layer**
+
+    (b) Determining which route through the subnet to use: **Network layer** (**路由选择是网络层的职责**)
+
+??? "A system has an 7-layer protocol hierarchy. Applications generate messages of length 1000 bytes. At each of the layers , an 20 byte header is added. What fraction of the network bandwidth is filled with headers?"
+    7层协议，每层加 20 字节头文件，最终大小是 $1000 + 7\times 20 = 1140 \text{bytes}$ ，因此 header 占比为 $\frac{140}{1140} = 0.12280 \approx 12\%$
+
+??? "How long was a bit on the original 802.3 standard in meters? Use a transmission speed of 10 Mbps and assume the propagation speed in coax is 2/3 the speed of light in vacuum."
+    传输速度为 10 Mbps,因此传输 1 bit 的时间是 $\frac{1}{10\text{Mbps}}=10^{-7}\text{spb}$
+
+    这个时间乘上 coax 的传播速度就是 1 bit 的长度：$10^{-7}\text{spb} \times \frac23 \times 3 \times 10^8 \text{m/s} = 20 \text{mpb}$
+    即一个 bit 长 20m
+
+??? "A client-server system uses a satellite network, with the satellite at a height of 40000 km. What is the best-case delay in response to a request?"
+    Client-server system uses a satellite network 指明了一个 request-response 的传输路径是 客户端 $\rightarrow$ 卫星 $\rightarrow$ 服务器 $\rightarrow$ 卫星 $\rightarrow$ 客户端。
+    
+    因此总传输路径大致是卫星高度的 4 倍，电磁波传播速度可以视作光速。因此答案为 $d_{best\_case}=\frac{4\times 40000\text{km}}{3\times10^8\text{m/s}} \approx 0.5333\text{s} \approx 533.3\text{ms}$
+
+??? "An image is 1024 x 768 pixels with 3 bytes/pixel. Assume the image is uncompressed. How long does it take to transmit it over a 56-kbps modem channel? Over a 1-Mbps cable modem? Over a 10-Mbps Ethernet? Over 100-Mbps Ethernet? (round to three decimal place)"
+    总图片的大小是 $(1024 \times 768 \text{pixels}) \times (3\times 8 \text{bits/pixel}) = 18874368 \text{bits}$
+
+    对 56Kbps 网络，传输时间为 $\frac{18874368 \text{bits}}{56\times10^3 \text{bps}}=337.042\text{s}$
+    
+    对 1Mbps 网络，传输时间为 $\frac{18874368 \text{bits}}{1\times10^6 \text{bps}}=18.874\text{s}$
+
+    剩下的懒得打字
+
+??? "A collection of five routers is to be connected in a point-to-point subnet. Between each pair of routers, the designers may put a high-speed line, a medium-speed line, a low-speed line, or no line. If it takes 100 ms of computer time to generate and inspect each topology, how long will it take to inspect all of them? (give your answer as xxx.xx)"
+    **存疑：这个题可能我理解有误：它是选择一对路由器还是可以选择多对路由器？**
+    每对之间路由器有4种选择（高速/中速/低速/无），5个路由器共有 $C^5_2=10$ 对，拓扑总数 $4^{10} = 1048576$。
+    每个拓扑 $100 ms=0.1 s$，总时间 = $1048576 × 0.1 s = 104857.6 s$。
+
+??? "Which of the following description about OSI layers is incorrect?"
+    A. The physical layer is concerned with transmitting raw bits over a communication channel
+
+    B. The data link layer is a true end-to-end layer, all the way from the source to the destination
+
+    C. The network layer controls the operation of the subnet and determines how packets are routed from source to destination
+
+    D. The application layer contains a variety of protocols that are commonly needed by users
+
+    选 **B**，上面的图可以看出 data link layer 是链式的。
+
+??? "Which service model is connection-oriented service?"
+    **A. Virtual circuit service**
+
+    B. Acknowledged datagram service (可靠无连接服务)
+    
+    C. Client-server service
+    
+    D. Datagram service （不可靠无连接服务）
+
+??? "What is the name of PDU at the network layer of the OSI reference model?"
+    A. message (Application in TCP/IP Model)
+
+    B. frame (Data link layer)
+    
+    **C. packet**
+    
+    D. segment (Transport layer in TCP/IP Model)
+
+??? "Some network systems support transmission to a subset of the machines. This mode of operation is called:"
+    A. flow control
+
+    B. congestion control
+
+    **C. multicasting**
+
+    D. broadcasting
