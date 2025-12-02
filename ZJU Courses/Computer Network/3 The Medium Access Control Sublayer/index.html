@@ -1,0 +1,1573 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://nepl1t.github.io/axeria-note/ZJU%20Courses/Computer%20Network/3%20The%20Medium%20Access%20Control%20Sublayer/">
+      
+      
+        <link rel="prev" href="../2%20Data%20Link%20Layer/">
+      
+      
+        <link rel="next" href="../4%20Network%20Layer/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>3 The MAC Sublayer - Axeria Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3-the-mac-sublayer" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Axeria Notebook" class="md-header__button md-logo" aria-label="Axeria Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M82.6 76.1c-3.8-5.1-8.7-9.4-14.2-12.5s-11.7-5.1-18.1-5.7-12.8.1-18.8 2.2-11.6 5.3-16.3 9.6c-17.6 16.2-19 43.5-4.8 62.8l91.8 123L9.9 379.6c-14.2 19.3-13.1 46.6 4.7 62.8 4.7 4.3 10.3 7.6 16.3 9.6s12.5 2.8 18.8 2.2 12.5-2.5 18.1-5.7S78.2 441.1 82 436l128.9-173.3c1.5-2.1 2.3-4.6 2.3-7.1s-.8-5-2.3-7.1zm355.6 303.5-92.3-124.1 91.8-123c14.2-19.2 12.8-46.6-4.7-62.8-4.7-4.3-10.3-7.6-16.3-9.6s-12.5-2.8-18.8-2.2-12.5 2.5-18.1 5.7-10.4 7.4-14.2 12.5l-128 172.1c-1.5 2.1-2.3 4.6-2.3 7.1s.8 5 2.3 7.1L366 435.9c3.8 5.1 8.7 9.4 14.2 12.5s11.7 5.1 18.1 5.7 12.8-.1 18.8-2.2 11.6-5.3 16.3-9.6c17.8-16.2 19-43.5 4.7-62.8z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Axeria Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3 The MAC Sublayer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nepl1t/axeria-note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nepl1t/axeria-note
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to Axeria
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Other%20CS%20Courses/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Other CS Courses
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  ZJU Courses
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Axeria Notebook" class="md-nav__button md-logo" aria-label="Axeria Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M82.6 76.1c-3.8-5.1-8.7-9.4-14.2-12.5s-11.7-5.1-18.1-5.7-12.8.1-18.8 2.2-11.6 5.3-16.3 9.6c-17.6 16.2-19 43.5-4.8 62.8l91.8 123L9.9 379.6c-14.2 19.3-13.1 46.6 4.7 62.8 4.7 4.3 10.3 7.6 16.3 9.6s12.5 2.8 18.8 2.2 12.5-2.5 18.1-5.7S78.2 441.1 82 436l128.9-173.3c1.5-2.1 2.3-4.6 2.3-7.1s-.8-5-2.3-7.1zm355.6 303.5-92.3-124.1 91.8-123c14.2-19.2 12.8-46.6-4.7-62.8-4.7-4.3-10.3-7.6-16.3-9.6s-12.5-2.8-18.8-2.2-12.5 2.5-18.1 5.7-10.4 7.4-14.2 12.5l-128 172.1c-1.5 2.1-2.3 4.6-2.3 7.1s.8 5 2.3 7.1L366 435.9c3.8 5.1 8.7 9.4 14.2 12.5s11.7 5.1 18.1 5.7 12.8-.1 18.8-2.2 11.6-5.3 16.3-9.6c17.8-16.2 19-43.5 4.7-62.8z"/></svg>
+
+    </a>
+    Axeria Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nepl1t/axeria-note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nepl1t/axeria-note
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome to Axeria
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Other%20CS%20Courses/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Other CS Courses
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Other CS Courses
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    UCB CS162
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            UCB CS162
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Other%20CS%20Courses/UCB%20CS162/Lec1_%E7%BA%BF%E7%A8%8B%EF%BC%8C%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%EF%BC%8C%E8%BF%9B%E7%A8%8B%E4%B8%8EDual%20Mode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lec1 线程，地址空间，进程与Dual Mode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    ZJU Courses
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            ZJU Courses
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Computer Network
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0%20Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0 Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1%20Physical%20Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1 Physical Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2%20Data%20Link%20Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2 Data Link Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    3 The MAC Sublayer
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    3 The MAC Sublayer
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-channel-allocation-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Channel Allocation Problem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Channel Allocation Problem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#static-channel-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Channel Allocation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-assumptions-of-dynamic-channel-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Assumptions of Dynamic Channel Allocation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-access-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Access Protocols
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiple Access Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aloha" class="md-nav__link">
+    <span class="md-ellipsis">
+      ALOHA
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ALOHA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pure-aloha" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pure ALOHA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slotted-aloha" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slotted ALOHA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csma" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSMA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csmacd" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSMA/CD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collision-free-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collision Free Protocols
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Collision Free Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reservation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reservation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token-passing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token Passing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-countdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Countdown
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limited-contention-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limited-Contention Protocols
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-access-with-collision-avoidance-maca-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Access with Collision Avoidance - MACA Protocols
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csmama" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSMA/MA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ethernet-ieee-8023" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ethernet (IEEE 802.3)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ethernet (IEEE 802.3)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ethernet-frame-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ethernet Frame Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wireless-lans-ieee-80211-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wireless LANs (IEEE 802.11 WiFi)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-link-layer-switching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Link Layer Switching
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4%20Network%20Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4 Network Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5%20Transport%20Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5 Transport Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6%20Application%20Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6 Application Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Operating%20System/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Operating System
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Operating System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Operating%20System/0%20Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0 Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Operating%20System/1%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1 Process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Operating%20System/1.5%20Learning%20by%20xv6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.5 Learning by xv6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-channel-allocation-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Channel Allocation Problem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Channel Allocation Problem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#static-channel-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Channel Allocation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-assumptions-of-dynamic-channel-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Assumptions of Dynamic Channel Allocation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-access-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Access Protocols
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiple Access Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aloha" class="md-nav__link">
+    <span class="md-ellipsis">
+      ALOHA
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ALOHA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pure-aloha" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pure ALOHA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slotted-aloha" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slotted ALOHA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csma" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSMA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csmacd" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSMA/CD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collision-free-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collision Free Protocols
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Collision Free Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reservation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reservation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token-passing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token Passing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-countdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Countdown
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limited-contention-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limited-Contention Protocols
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-access-with-collision-avoidance-maca-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Access with Collision Avoidance - MACA Protocols
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csmama" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSMA/MA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ethernet-ieee-8023" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ethernet (IEEE 802.3)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ethernet (IEEE 802.3)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ethernet-frame-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ethernet Frame Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wireless-lans-ieee-80211-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wireless LANs (IEEE 802.11 WiFi)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-link-layer-switching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Link Layer Switching
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="3-the-mac-sublayer">3 The MAC Sublayer</h1>
+<p>在 TCP/IP 协议族中，数据链路层通常分为两个子层：数据链路控制（DLC）子层和介质访问控制（MAC）子层。DLC 子层的内容（Framing，Error Detection/Correction）已经在上一章提及，接下来是 MAC 子层。</p>
+<p>MAC 子层专门处理多点（或广播）链路的访问协调问题，确保多个节点在共享信道上发送数据时能够有序进行，从而解决信道分配问题。</p>
+<p>用来确定广播信道（多路访问信道/随机访问信道）的下一个使用者的协议，叫做多重访问协议。根据资源分配机制和冲突处理方式，多重访问协议通常可分为以下三类：</p>
+<ol>
+<li>
+<p>信道划分协议 (Channel Partitioning Protocols)。</p>
+<p><strong>预先分配带宽</strong>，将共享信道划分为多个较小的、互不干扰的逻辑子信道，并将每个子信道永久分配给一个节点。例如 TDMA，FDMA，CDMA</p>
+</li>
+<li>
+<p>随机访问协议 (Random Access Protocols)。</p>
+<p><strong>节点没有预定的传输时间或控制权限</strong>。任何站点只要有数据，就可以尝试以全部的信道速率 <span class="arithmatex">\(R\)</span> 发送。但是可能出现冲突，因此协议必须定义冲突检测和解决机制。例如 ALOHA，CSMA</p>
+</li>
+<li>
+<p>受控访问协议 (Controlled Access Protocols)</p>
+<p>这类协议通过预定的机制，<strong>确保在任何时刻只有一个工作站能够成功传输</strong>，从而消除竞争和冲突。例如 Reservation，Polling，Token Passing</p>
+</li>
+</ol>
+<h2 id="the-channel-allocation-problem">The Channel Allocation Problem</h2>
+<h3 id="static-channel-allocation">Static Channel Allocation</h3>
+<p><u>在任何一个 broadcasting network 里，关键的问题就是有多方需要使用信道的时候，确定哪一个该用它。</u>一个传统的做法，就是把一个信道的所有容量拆分给多个用户使用，这就是静态信道分配（Static Channel Allocation）。</p>
+<p>TDMA，FDMA 都是典型的静态信道分配方案。它们在 电路交换（Circuit Switching）中占有重要地位。</p>
+<p>但是，传统的静态信道分配会有以下问题：</p>
+<ol>
+<li>
+<p>应对突发流量表现差：现代计算机网络中数据流量往往表现出极端的突发性， <strong>峰值流量与平均流量之比极高</strong>。在这种情况下，静态信道分配表现不佳：</p>
+<ol>
+<li>
+<p>闲置时段的资源浪费：用户处于没有数据要发送的<strong>静止期（quiescent）</strong> 时，预分配的带宽资源闲置和浪费</p>
+<blockquote>
+<ul>
+<li>在采用电路交换的网络中，即使在静默期间，专用的电路也会处于闲置状态，无法被其他正在进行的连接使用</li>
+<li>FDMA中，如果可用频谱被划分为 <span class="arithmatex">\(N\)</span> 个区域，但实际通信的用户少于 <span class="arithmatex">\(N\)</span> 个，则很大一部分宝贵的频谱资源会被浪费</li>
+<li>如果想要通信的用户数量超过了信道划分的数量，即使一些被分配的用户是空闲的，仍会有用户因缺乏带宽而被拒绝通信</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>传输速率的限制：在用户突发活动期间，即使只有他一个用户有数据需要发送，该节点的最大吞吐量仍被限制为平均速率 <span class="arithmatex">\(R/N\)</span>，而无法使用信道的全部速率 <span class="arithmatex">\(R\)</span>。从而增加延迟。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>延迟放大效应：将一个总容量为 <span class="arithmatex">\(C\)</span> 的单一信道静态地划分为 <span class="arithmatex">\(N\)</span> 个独立的子信道（每个容量为 <span class="arithmatex">\(C/N\)</span>），在总负载和总容量不变的情况下，平均延迟将比集中式排队系统差 <span class="arithmatex">\(N\)</span> 倍（即 <span class="arithmatex">\(T_N=N\times T\)</span>）</p>
+</li>
+</ol>
+<details class="tips">
+<summary>使用 Prelimary Queue Theory 分析延迟放大效应</summary>
+<p><em>注：这一段不考，我也没咋听懂。有兴趣的来人补充下</em></p>
+</details>
+<p>所以，静态信道分配虽然很简洁地解决了 Collision 问题，但它在带宽利用率和平均延迟方面表现出明显的性能缺陷。所以<u>当前计算机网络的发展主流是向分组交换（Packet Switching）动态信道分配（Dynamic Channel Allocation）发展。</u></p>
+<h3 id="key-assumptions-of-dynamic-channel-allocation">Key Assumptions of Dynamic Channel Allocation</h3>
+<h2 id="multiple-access-protocols">Multiple Access Protocols</h2>
+<h3 id="aloha">ALOHA</h3>
+<h4 id="pure-aloha">Pure ALOHA</h4>
+<h4 id="slotted-aloha">Slotted ALOHA</h4>
+<h3 id="csma">CSMA</h3>
+<p><strong>载波侦听协议（Carrier Sense Protocol）</strong>要求信号站监听是否存在载波（即是否存在传输）。如果信道被检测到空闲，工作站即可开始发送；如果信道忙碌，工作站则会等待。</p>
+<p>最简单的基于这一协议的多路访问协议（Multiple Access Protocol）是 <strong>1-Persistent CSMA</strong> （1-Persistent 表示，当站点发现信道空闲时，其发送数据的概率是 1）。</p>
+<p>当一个站有数据要发送时：</p>
+<ol>
+<li>侦听信道，确定是否有其他站正在传输数据</li>
+<li>如果信道空闲，<strong>立马</strong>发送数据；如果信道繁忙，则持续监听，直到信道空闲后，<strong>立马</strong>发送数据</li>
+<li>如果发生冲突，等待一段随机长度的时间后重新发送</li>
+</ol>
+<p>尽管 CSMA 要求工作站先侦听信道，但它无法完全消除冲突。</p>
+<p>发生冲突的可能性最高，因为两个或多个工作站可能同时检测到信道空闲并立即发送</p>
+<p><strong>Non-persistent CSMA</strong> 在原来的基础上，如果检测到信道忙碌，工作站不会持续监听，而是等待一段随机的时间，然后再次侦测信道。</p>
+<p>这种方法降低了冲突的概率，因为它不太可能让两个或多个工作站等待相同的时间，但代价是降低了网络效率，因为介质可能在有数据要发送的工作站等待期间保持空闲</p>
+<p><strong>p-persistent CSMA</strong> 是一个 <strong>专用于 Time-slotted Channel</strong> 的方法。</p>
+<ol>
+<li>侦听信道，确定是否有其他站正在传输数据</li>
+<li>如果信道空闲，工作站以概率 <span class="arithmatex">\(p\)</span> 发送，或以概率 <span class="arithmatex">\(q=1−p\)</span> 推迟到下一个时间槽</li>
+<li>如果信道忙碌，工作站等待直到下一个时间槽并重复步骤 1.</li>
+<li>当然，这还是可能发生冲突。如果发生冲突，站会等待一段随机长度的时间后重新开始步骤 1.</li>
+</ol>
+<p>下图是三种 persistent method 的流程图（来自 Behrouz A. Forouzan 的<em>Data Communications and Networking with TCPIP Protocol Suite, 6th. ed</em>）：</p>
+<p><img alt="alt text" src="../assets/Note_Lecture3/image.png" /></p>
+<h3 id="csmacd">CSMA/CD</h3>
+<h3 id="collision-free-protocols">Collision Free Protocols</h3>
+<h4 id="reservation">Reservation</h4>
+<h4 id="token-passing">Token Passing</h4>
+<h4 id="binary-countdown">Binary Countdown</h4>
+<h3 id="limited-contention-protocols">Limited-Contention Protocols</h3>
+<h3 id="multiple-access-with-collision-avoidance-maca-protocols">Multiple Access with Collision Avoidance - MACA Protocols</h3>
+<h3 id="csmama">CSMA/MA</h3>
+<h2 id="ethernet-ieee-8023">Ethernet (IEEE 802.3)</h2>
+<h3 id="ethernet-frame-structure">Ethernet Frame Structure</h3>
+<h2 id="wireless-lans-ieee-80211-wifi">Wireless LANs (IEEE 802.11 WiFi)</h2>
+<h2 id="data-link-layer-switching">Data Link Layer Switching</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "search.suggest", "search.highlight", "header.autohide", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

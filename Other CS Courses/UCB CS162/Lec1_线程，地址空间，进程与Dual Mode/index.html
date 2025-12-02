@@ -1,0 +1,1468 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://nepl1t.github.io/axeria-note/Other%20CS%20Courses/UCB%20CS162/Lec1_%E7%BA%BF%E7%A8%8B%EF%BC%8C%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%EF%BC%8C%E8%BF%9B%E7%A8%8B%E4%B8%8EDual%20Mode/">
+      
+      
+        <link rel="prev" href="../../">
+      
+      
+        <link rel="next" href="../../../ZJU%20Courses/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Lec1 线程，地址空间，进程与Dual Mode - Axeria Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#summary" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Axeria Notebook" class="md-header__button md-logo" aria-label="Axeria Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M82.6 76.1c-3.8-5.1-8.7-9.4-14.2-12.5s-11.7-5.1-18.1-5.7-12.8.1-18.8 2.2-11.6 5.3-16.3 9.6c-17.6 16.2-19 43.5-4.8 62.8l91.8 123L9.9 379.6c-14.2 19.3-13.1 46.6 4.7 62.8 4.7 4.3 10.3 7.6 16.3 9.6s12.5 2.8 18.8 2.2 12.5-2.5 18.1-5.7S78.2 441.1 82 436l128.9-173.3c1.5-2.1 2.3-4.6 2.3-7.1s-.8-5-2.3-7.1zm355.6 303.5-92.3-124.1 91.8-123c14.2-19.2 12.8-46.6-4.7-62.8-4.7-4.3-10.3-7.6-16.3-9.6s-12.5-2.8-18.8-2.2-12.5 2.5-18.1 5.7-10.4 7.4-14.2 12.5l-128 172.1c-1.5 2.1-2.3 4.6-2.3 7.1s.8 5 2.3 7.1L366 435.9c3.8 5.1 8.7 9.4 14.2 12.5s11.7 5.1 18.1 5.7 12.8-.1 18.8-2.2 11.6-5.3 16.3-9.6c17.8-16.2 19-43.5 4.7-62.8z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Axeria Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lec1 线程，地址空间，进程与Dual Mode
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nepl1t/axeria-note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nepl1t/axeria-note
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to Axeria
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Other CS Courses
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ZJU%20Courses/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  ZJU Courses
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Axeria Notebook" class="md-nav__button md-logo" aria-label="Axeria Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M82.6 76.1c-3.8-5.1-8.7-9.4-14.2-12.5s-11.7-5.1-18.1-5.7-12.8.1-18.8 2.2-11.6 5.3-16.3 9.6c-17.6 16.2-19 43.5-4.8 62.8l91.8 123L9.9 379.6c-14.2 19.3-13.1 46.6 4.7 62.8 4.7 4.3 10.3 7.6 16.3 9.6s12.5 2.8 18.8 2.2 12.5-2.5 18.1-5.7S78.2 441.1 82 436l128.9-173.3c1.5-2.1 2.3-4.6 2.3-7.1s-.8-5-2.3-7.1zm355.6 303.5-92.3-124.1 91.8-123c14.2-19.2 12.8-46.6-4.7-62.8-4.7-4.3-10.3-7.6-16.3-9.6s-12.5-2.8-18.8-2.2-12.5 2.5-18.1 5.7-10.4 7.4-14.2 12.5l-128 172.1c-1.5 2.1-2.3 4.6-2.3 7.1s.8 5 2.3 7.1L366 435.9c3.8 5.1 8.7 9.4 14.2 12.5s11.7 5.1 18.1 5.7 12.8-.1 18.8-2.2 11.6-5.3 16.3-9.6c17.8-16.2 19-43.5 4.7-62.8z"/></svg>
+
+    </a>
+    Axeria Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nepl1t/axeria-note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nepl1t/axeria-note
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome to Axeria
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Other CS Courses
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Other CS Courses
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    UCB CS162
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            UCB CS162
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lec1 线程，地址空间，进程与Dual Mode
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lec1 线程，地址空间，进程与Dual Mode
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-logical-sequence-of-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thread: Logical sequence of instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Thread: Logical sequence of instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      状态标志 (Status Flags)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      控制标志 (Control Flags)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#address-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      Address Space
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Address Space">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-and-bound-protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base and Bound Protection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x86-segments-and-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      x86: Segments and Stack
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="x86: Segments and Stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      利用段寄存器与描述符表进行间接寻址
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      描述符与特权级
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#another-idea-address-space-translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Another idea: Address Space Translation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dual-mode-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dual Mode Operation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ZJU%20Courses/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    ZJU Courses
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            ZJU Courses
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ZJU%20Courses/Computer%20Network/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Computer Network
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ZJU%20Courses/Computer%20Network/0%20Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0 Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ZJU%20Courses/Computer%20Network/1%20Physical%20Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1 Physical Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ZJU%20Courses/Computer%20Network/2%20Data%20Link%20Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2 Data Link Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ZJU%20Courses/Computer%20Network/3%20The%20Medium%20Access%20Control%20Sublayer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3 The MAC Sublayer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ZJU%20Courses/Computer%20Network/4%20Network%20Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4 Network Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ZJU%20Courses/Computer%20Network/5%20Transport%20Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5 Transport Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ZJU%20Courses/Computer%20Network/6%20Application%20Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6 Application Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../ZJU%20Courses/Operating%20System/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Operating System
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Operating System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ZJU%20Courses/Operating%20System/0%20Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0 Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ZJU%20Courses/Operating%20System/1%20Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1 Process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ZJU%20Courses/Operating%20System/1.5%20Learning%20by%20xv6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.5 Learning by xv6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-logical-sequence-of-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thread: Logical sequence of instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Thread: Logical sequence of instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      状态标志 (Status Flags)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      控制标志 (Control Flags)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#address-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      Address Space
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Address Space">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-and-bound-protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base and Bound Protection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x86-segments-and-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      x86: Segments and Stack
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="x86: Segments and Stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      利用段寄存器与描述符表进行间接寻址
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      描述符与特权级
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#another-idea-address-space-translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Another idea: Address Space Translation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dual-mode-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dual Mode Operation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Lec1 线程，地址空间，进程与Dual Mode</h1>
+
+<h3 id="summary">Summary</h3>
+<p>Thread: Execution Context</p>
+<ul>
+<li>Fully describes program state</li>
+<li>Program Counter, Registers, Execution Flags, Stack</li>
+</ul>
+<p>Address space (with or w/o translation)</p>
+<ul>
+<li>Set of memory addresses accessible to program (for read or write)</li>
+<li>May be distinct from memory space of the physical machine (in which case programs operate in a virtual address space)</li>
+</ul>
+<p>Process: an instance of a running program</p>
+<ul>
+<li>Protected Address Space + One or more Threads</li>
+</ul>
+<p>Dual mode operation / Protection</p>
+<ul>
+<li>Only the "system" has the ability to access certain resources</li>
+<li>Combined with translation, isolates programs from each other and the OS from programs</li>
+</ul>
+<h3 id="thread-logical-sequence-of-instructions">Thread: Logical sequence of instructions</h3>
+<p>Thread 是对 Processor 的抽象</p>
+<p>指令循环：</p>
+<ol>
+<li>Fetch PC 指向的指令</li>
+<li>decode 指令</li>
+<li>ALU 执行运算</li>
+<li>写回内存/REG，更新 PC</li>
+<li>重复这一循环</li>
+</ol>
+<p><img alt="alt text" src="../assets/image.png" /></p>
+<p><strong>线程</strong> 就是对这一切的 Abstraction： PC， regs， Execution Flags（执行标志），栈堆空间，内存状态……</p>
+<details class="note">
+<summary>Execution Flags</summary>
+<p>在 x86 架构中，处理器的当前状态和算术逻辑运算的结果通过一个称为 <strong>EFLAGS 寄存器</strong> 的特殊寄存器来记录。 这个寄存器里的每一个位（bit）就是一个标志（flag），它们控制着程序的执行流程或表明特定操作的结果。</p>
+<h4 id="status-flags">状态标志 (Status Flags)</h4>
+<p>这些标志主要由算术指令（如 ADD, SUB, CMP）自动设置，用于反映上一个操作的结果。</p>
+<ul>
+<li><strong>ZF (Zero Flag - 零标志):</strong> 如果运算结果为零，则设置为 1。</li>
+<li><strong>SF (Sign Flag - 符号标志):</strong> 如果运算结果为负数（即最高位为1），则设置为 1。</li>
+<li><strong>OF (Overflow Flag - 溢出标志):</strong> 如果有符号数运算的结果超出了目标操作数的位数范围（发生溢出），则设置为 1。</li>
+<li><strong>CF (Carry Flag - 进位标志):</strong> 如果无符号数运算产生进位（加法）或借位（减法），则设置为 1。</li>
+<li><strong>PF (Parity Flag - 奇偶标志):</strong> 如果运算结果的最低有效字节中“1”的个数为偶数，则设置为 1。</li>
+<li><strong>AF (Auxiliary Carry Flag - 辅助进位标志):</strong> 如果从第3位到第4位发生进位或借位（用于BCD码算术），则设置为 1。</li>
+</ul>
+<h4 id="control-flags">控制标志 (Control Flags)</h4>
+<p>这些标志用于控制 CPU 的某些特定操作。</p>
+<ul>
+<li><strong>DF (Direction Flag - 方向标志):</strong> 控制字符串操作指令（如 MOVS, CMPS）处理内存地址时的方向。
+    <strong>*DF = 0:</strong> 地址递增。</li>
+<li><strong>DF = 1:</strong> 地址递减。</li>
+<li><strong>IF (Interrupt Enable Flag - 中断允许标志):</strong> 控制 CPU 是否响应可屏蔽的外部硬件中断。
+    <strong>*IF = 1:</strong> 允许中断。</li>
+<li><strong>IF = 0:</strong> 忽略中断。</li>
+</ul>
+</details>
+<p>一个线程由一个 CPU 的物理核心运作。（一般一个 core 跑一个 thread。现在的超线程技术允许一个 Core 跑两个或更多的 thread）</p>
+<p>一个进程也可以有多个 thread 在内部跑</p>
+<p>当进程被 core <em>挂载</em> 的时候，它才能在 core 上跑</p>
+<p>当它没有被挂载的时候，它不会被 terminated，而是存在内存中的 Thread Control Block。</p>
+<p>当操作系统需要切换到另一个线程时，它会：</p>
+<ol>
+<li><strong>保存当前状态</strong>：在当前线程的“书签”（TCB）上记下它运行到了哪里。</li>
+<li><strong>加载新状态</strong>：找到下一个要运行线程的“书签”（TCB），然后从记录的位置继续执行。</li>
+</ol>
+<p>TCB 由 OS kernel 负责管理，并存储在计算机的内存中。</p>
+<p>当一个核心挂载一个线程时，它会执行一个称为“上下文恢复”（Context Restore）或“上下文切换”（Context Switch）的过程。</p>
+<ol>
+<li>把当前进程的 PC，SP 等存进 TCB</li>
+<li>把将要读取的进程的 PC，SP 等从 TCB 中读到核心的寄存器堆，然后 jumped to PC</li>
+</ol>
+<p>What triggered this switch?</p>
+<ul>
+<li>Timer, voluntary yield, I/O, other things we will discuss</li>
+</ul>
+<p>Threads are virtual cores</p>
+<h3 id="address-space">Address Space</h3>
+<p>对 32 位系统，有 <span class="arithmatex">\(2^{32} \approx 10^9\)</span> 个地址 <code>0x00000000~0xFFFFFFFF</code></p>
+<p>对 64 位系统，有 <span class="arithmatex">\(2^{64} \approx 10^{18}\)</span> 个地址</p>
+<p>但是，这些地址并非真的有内存（内存大小是有限的。它的范围由硬件决定，例如，一台有 4GB 内存的计算机，其物理地址范围就是 <span class="arithmatex">\(0 \sim 2^{32}-1\)</span> ），只是处理器认为这些是可用的。</p>
+<p>因此，(Virtual) Address Space 是对 Main Memory 的抽象。</p>
+<p>地址空间是操作系统为每个运行的进程（Process）创建的一个独立的、私有的内存视图。它是一个从 0 开始的连续整数地址范围，进程中的代码可以使用这些地址来访问内存。</p>
+<p><img alt="alt text" src="../assets/image-1.png" /></p>
+<ol>
+<li>Static Data：静态变量，全局变量</li>
+<li>Stack：局部变量。（递归调用一个函数时，栈存储caller的变量，然后 SP 向下移动。调用完毕时，弹出，SP 向上移动）</li>
+<li>Heap：用 malloc 等方法动态分配的内存</li>
+</ol>
+<p>What happens when you read or write to an address?</p>
+<ul>
+<li>Perhaps acts like regular memory</li>
+<li>Perhaps ignores writes</li>
+<li>Perhaps causes I/O operation</li>
+<li>(Memory-mapped I/O)</li>
+<li>Perhaps causes exception (fault)</li>
+<li>Communicates with another program</li>
+</ul>
+<h4 id="base-and-bound-protection">Base and Bound Protection</h4>
+<p>为什么需要 Protection? 因为早期的操作系统，使用简单的 <strong>多道程序系统（Multiprogramming System）</strong>，它只把CPU虚拟化（让每个程序好像有一颗自己的“vCPU”），而对内存和其他设备几乎不做隔离或虚拟化，安全风险极大。</p>
+<details class="info">
+<summary>多道程序系统（Multiprogramming System）</summary>
+<p>这个系统的核心目标，是 <strong>提高CPU的利用率</strong> 。</p>
+<p>用于实现这一点的技术就是 <strong>vCPU 抽象</strong>，系统把每个正在运行的程序（进程/线程）看成拥有一颗“虚拟CPU”，其状态就是一组寄存器值：PC（程序计数器）、通用寄存器、SP（栈指针）、处理器状态字等。（也就是我们先前所说的 <strong>线程</strong>）这些状态保存在PCB/TCB（进程/线程控制块）里。</p>
+<p>系统在不同的 vCPU 之间，使用时间片+上下文切换：硬件时钟每隔 <span class="arithmatex">\(T\)</span> 毫秒触发一次中断，CPU转入内核态；内核保存当前 vCPU 的寄存器到其 PCB。调度器从就绪队列选下一个 vCPU，恢复它的寄存器，切回用户态继续执行。若某个 vCPU 因 I/O 等问题而阻塞，就立即切走去跑别的 vCPU，以提高CPU利用率。</p>
+<p>问题在于，这个系统的内存模型是单一的物理（或线性）地址空间，<strong>所有进程/线程都能读写整个内存</strong>；或者用很原始的“固定分区/可变分区”做装入，但没有真正的硬件强制保护，因此“Each thread can read/write memory”并不仅是“能访问自己的内存”，而是<strong>“几乎能访问任何内存”，包括其他程序和内核的区域。</strong>，安全风险在于，软件可以写入了你的系统内存，搞炸你的电脑，或者从你的内存中读取其他私密信息。</p>
+<p>因此，后续设计了一系列内存保护技术。</p>
+<p>Classic Mac OS (System 1 到 Mac OS 9)，Windows 1.0 到 Windows 3.1/Windows 95/98/Me，都使用了这种系统。</p>
+<p><img alt="alt text" src="../image-2.png" /></p>
+</details>
+<p>因此早期设计了两个特殊的硬件寄存器 Base reg / Bound reg</p>
+<p><img alt="alt text" src="../image-3.png" /></p>
+<p>程序运行时，首先将存在磁盘的程序（上图左侧黄色部分）拷贝到系统指定的一个 基地址（Base address） 指向的<strong>物理内存位置</strong>， Base reg 指向基地址，而 Bound reg 决定了这个程序能占用多大的内存空间。</p>
+<p>我们在 DRAM 中实际用来查找的物理地址，就是程序给出的逻辑地址 + 基地址得到的。当程序运行时，它产生的每个内存地址 都会由硬件进行检查。硬件会验证该地址是否在 <span class="arithmatex">\([\text{base}, \text{base} + \text{bound})\)</span> 的范围之内。如果地址越界，硬件会触发一个异常，将控制权交给操作系统。操作系统随后会终止这个违规的程序。</p>
+<p>比如，当前程序运行到哪一条指令，是由 PC 寄存器记录的（PC 寄存器从 0 开始），在上图中，PC = 0010....，然后加上程序的基地址 1000....，就得到了当前执行到的内存位置，即 1010.... 。</p>
+<p>但是注意， <strong>程序虽然本身使用属于自己的从 0000.... 开始的逻辑地址，但将基地址作为偏移值就可以直接得到物理地址，意思就是，实际上在这里仍然访问的是实际的物理内存地址。</strong></p>
+<h4 id="x86-segments-and-stack">x86: Segments and Stack</h4>
+<p>上述模型的缺点明显：它只能为一个程序定义一个单一、连续的内存块，缺乏灵活性，难以实现内存共享和更复杂的保护策略。</p>
+<p>在 x86 架构中，具体的 implement and improvement 就是 segments and stacks</p>
+<p>不同于为整个程序只设置一对基址/边界寄存器，x86架构允许一个程序同时拥有多个内存段，例如代码段（Code Segment）、数据段（Data Segment）、堆栈段（Stack Segment）等。每个段都有其自己的一套“基址”和“边界”信息。</p>
+<p><img alt="alt text" src="../image-4.png" /></p>
+<h5 id="_1">利用段寄存器与描述符表进行间接寻址</h5>
+<p>因为每个程序都有多个段，x86 不能直接使用几个固定的寄存器来存储所有段的基址和边界。</p>
+<p>x86 使用 <strong>段寄存器</strong>（如<code>CS</code>, <code>DS</code>, <code>SS</code>）存放的是一个称为“选择子（Selector）”的值。这个选择子会指向一个位于内存中的<strong>描述符表（Descriptor Table）</strong>中的一个条目。这个条目，即<strong>段描述符（Segment Descriptor）</strong>，才真正包含了该段的详细信息，其中包括：</p>
+<ul>
+<li>段基址（Base Address）： 明确定义了段在物理或线性地址空间中的起始位置。</li>
+<li>段界限（Limit）： 就是 Bound，定义了段的大小。CPU会自动检查内存访问是否超过这个界限。</li>
+<li><strong>访问权限（Access Rights &amp; Type）</strong>： 包含了特权级（Privilege Levels，即Ring 0-3）、段的类型（代码/数据）、是否可读/可写/可执行等信息。</li>
+</ul>
+<h5 id="_2">描述符与特权级</h5>
+<p>通过引入描述符和特权级，x86分段机制将内存保护提升到了一个新的高度。它不仅检查地址是否越界（经典的边界检查），还会检查访问是否合法（权限检查）。例如，用户态程序（Ring 3）无法直接访问或修改内核态（Ring 0）的数据段，即使它知道地址也不行。同样，CPU通常会阻止程序向一个被标记为“只读”的代码段写入数据。</p>
+<h4 id="another-idea-address-space-translation">Another idea: Address Space Translation</h4>
+<p>尽管基址和边界寄存器提供了保护，但它仍然会有一些缺陷</p>
+<ol>
+<li><strong>可扩展的堆和栈</strong>。不管是 Base and Bound ，还是 x86 的 Segment，程序运行的一开始就会固定好分配的内存量作为 Bound/Limit。而现代的很多软件，有至少两个内存区域需要动态扩展：栈空间保存每一个 procedure 的局部变量，它会增长；堆空间保存 malloc 产生的对象，它也会增长。简单的一对基址和界限寄存器不能适应，会有装不下的风险</li>
+<li><strong>不能实现内存共享</strong>。同一程序的不同进程，或者调用同个库的不同进程之间，如果可以内存共享，会极大减少内存占用。但是 Base and Bound 的设计不允许内存共享（x86 的 Segment 解决了这一问题）</li>
+<li>
+<p><strong>内存碎片化</strong>。Base and Bound 模型要求一个进程的整个地址空间必须在物理内存中是连续的，而随着时间的推移，由于应用程序在不规则的时间启动和结束，动态创建/退出进程会把空闲内存撕裂成许多小洞（外部碎片），导致总量足够却没有足够大的单个空洞来容纳新进程。</p>
+<p>而对于 x86 分段，一个进程不再是一个单一的、连续的内存块，而是由多个独立的段（代码段、数据段、堆栈段等）组成。但是每个段仍需一段连续物理内存，只是进程可拆为多个较小段，可以分别塞进多个空洞，新进程更容易拼出来。也就是说，只是指标不治本</p>
+</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>比如，一个 64MB 的内存，先后开始了进程A（10MB），B（20MB），C（15MB），然后释放了进程B，内存布局会变成：<code>[ A (10MB) | &lt;空闲 (20MB)&gt; | C (15MB) | 空闲 (19MB) ]</code></p>
+<p>接下来，一个新的进程 D 想要启动，它需要 25MB 的内存。总空闲内存是够的：39MB，但是我们启动不了，因为最大的连续块只有20MB。</p>
+<p>可能有读者会想：如果我们把 C 和 A 拼到一块，不就有空间了吗？没错，这是一个<em>理论上可行</em>的做法，<strong>压实（compaction）</strong>：把已分配块向一端紧缩，合并空洞，获得更大连续区间。但是也只是理论上可行。</p>
+<p>为什么呢？因为系统开销太大了。每次压实你都得拷贝大量内存、暂停所有相关进程，费时费力，在此期间还不能干别的事情。更关键的是，系统进程，IO缓存区（在大多数电脑中，操作系统是通过读写内存中的特定区域来控制的电脑的IO设备，如显示器或者硬盘的）这种东西怎么能说搬就搬呢？</p>
+</div>
+<p>现代操作系统采用地址空间转换 (Address Space Translation)。其核心思想是为每个进程创建一个<strong>虚拟地址空间 (Virtual Address Space)</strong>，这个地址和先前的间接寻址完全不同，是一个独立于物理内存的，全新的内存空间。</p>
+<p>虚拟化：每个进程都拥有自己从 0 开始的、独立的虚拟地址空间。</p>
+<p>转换：当进程访问一个虚拟地址时，硬件（在操作系统的辅助下）会实时地将其翻译成一个物理内存中的实际地址。</p>
+<p>分页 (Paging)：为了实现高效的转换和管理，虚拟地址空间和物理内存都被划分成固定大小的块，分别称为页 (Page) 和 页帧 (Page Frame)。操作系统为每个进程维护一个页表 (Page Table)，该表记录了虚拟页到物理页帧的映射关系。</p>
+<h3 id="process">Process</h3>
+<p>进程就是一个程序的实例，它拥有一个拥有受限读写权限的执行环境，包含一个或多个线程。</p>
+<p>如果多个进程位于同一个进程中，它们可以很容易进行通信，因为它们共享同一块内存区域。当然也可以互相覆写。</p>
+<p><img alt="alt text" src="../image-5.png" /></p>
+<h3 id="dual-mode-operation">Dual Mode Operation</h3>
+<p>syscall, interrupt,  trap or exception 是计算机从用户进程返回操作系统的三种途径。这些都是 unprogrammed control transfer。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "search.suggest", "search.highlight", "header.autohide", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

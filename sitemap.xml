@@ -1,19 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://nepl1t.github.io/axeria-note/index.html</loc>
-         <lastmod>2025-09-22</lastmod>
+         <loc>https://nepl1t.github.io/axeria-note/</loc>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
-         <loc>https://nepl1t.github.io/axeria-note/Other%20CS%20Courses/index.html</loc>
-         <lastmod>2025-09-22</lastmod>
+         <loc>https://nepl1t.github.io/axeria-note/Other%20CS%20Courses/</loc>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
-         <loc>https://nepl1t.github.io/axeria-note/ZJU%20Courses/index.html</loc>
-         <lastmod>2025-09-22</lastmod>
+         <loc>https://nepl1t.github.io/axeria-note/Other%20CS%20Courses/UCB%20CS162/Lec1_%E7%BA%BF%E7%A8%8B%EF%BC%8C%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%EF%BC%8C%E8%BF%9B%E7%A8%8B%E4%B8%8EDual%20Mode/</loc>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
-         <loc>https://nepl1t.github.io/axeria-note/ZJU%20Courses/Computer%20Network/0%20Overview.html</loc>
-         <lastmod>2025-09-22</lastmod>
+         <loc>https://nepl1t.github.io/axeria-note/ZJU%20Courses/</loc>
+         <lastmod>2025-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://nepl1t.github.io/axeria-note/ZJU%20Courses/Computer%20Network/</loc>
+         <lastmod>2025-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://nepl1t.github.io/axeria-note/ZJU%20Courses/Computer%20Network/0%20Overview/</loc>
+         <lastmod>2025-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://nepl1t.github.io/axeria-note/ZJU%20Courses/Computer%20Network/1%20Physical%20Layer/</loc>
+         <lastmod>2025-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://nepl1t.github.io/axeria-note/ZJU%20Courses/Computer%20Network/2%20Data%20Link%20Layer/</loc>
+         <lastmod>2025-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://nepl1t.github.io/axeria-note/ZJU%20Courses/Computer%20Network/3%20The%20Medium%20Access%20Control%20Sublayer/</loc>
+         <lastmod>2025-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://nepl1t.github.io/axeria-note/ZJU%20Courses/Computer%20Network/4%20Network%20Layer/</loc>
+         <lastmod>2025-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://nepl1t.github.io/axeria-note/ZJU%20Courses/Computer%20Network/5%20Transport%20Layer/</loc>
+         <lastmod>2025-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://nepl1t.github.io/axeria-note/ZJU%20Courses/Computer%20Network/6%20Application%20Layer/</loc>
+         <lastmod>2025-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://nepl1t.github.io/axeria-note/ZJU%20Courses/Operating%20System/</loc>
+         <lastmod>2025-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://nepl1t.github.io/axeria-note/ZJU%20Courses/Operating%20System/0%20Overview/</loc>
+         <lastmod>2025-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://nepl1t.github.io/axeria-note/ZJU%20Courses/Operating%20System/1%20Process/</loc>
+         <lastmod>2025-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://nepl1t.github.io/axeria-note/ZJU%20Courses/Operating%20System/1.5%20Learning%20by%20xv6/</loc>
+         <lastmod>2025-12-02</lastmod>
     </url>
 </urlset>
